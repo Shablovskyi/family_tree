@@ -7,6 +7,9 @@ body {
   padding: 20px;
   font-size: 16px;
 }
+span{
+  font-size: 64px;
+}
 
 #family-tree {
   display: flex;
@@ -60,7 +63,7 @@ body {
   position: absolute;
   top: 0;
   right: 50%;
-  border-top: 2px solid #ccc;
+  border-top: 10px solid #ccc;
   width: 50%;
   height: 20px;
 }
@@ -68,7 +71,7 @@ body {
 .tree li::after {
   right: auto;
   left: 50%;
-  border-left: 2px solid #ccc;
+  border-left: 10px solid #ccc;
 }
 
 .tree li:only-child::after, .tree li:only-child::before {
@@ -84,7 +87,7 @@ body {
 }
 
 .tree li:last-child::before {
-  border-right: 2px solid #ccc;
+  border-right: 10px solid #ccc;
 }
 
 .tree li:first-child::after {
@@ -96,7 +99,7 @@ body {
   position: absolute;
   top: 0;
   left: 50%;
-  border-left: 2px solid #ccc;
+  border-left: 10px solid #ccc; /* Збільшено товщину вертикальної лінії до 10px */
   width: 0;
   height: 20px;
 }
