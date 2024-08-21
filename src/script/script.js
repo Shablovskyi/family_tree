@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
 
           function updateTree(person, isMainTree = false, branchTitle = "") {
-              let treeHTML = branchTitle ? `<h2>${branchTitle}</h2>` : "";
+              let treeHTML = branchTitle ? `<h2 class="branch-title">${branchTitle}</h2>` : "";
               treeHTML += `<ul class="tree-branch">${buildTree(person)}</ul>`;
               familyTreeContainer.innerHTML = treeHTML;
 
@@ -194,3 +194,4 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch(error => console.error('Error:', error));
 });
+
