@@ -1,0 +1,269 @@
+/* Базові стилі */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  font-size: 64px; /* Загальний базовий розмір шрифту */
+}
+
+#family-tree-container {
+  width: 100%;
+  overflow-x: auto; /* Додає горизонтальний скрол */
+  padding: 40px 0; /* Збільшено відступи */
+  background-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  white-space: nowrap; /* Запобігає переносу рядків */
+}
+
+.branch-title {
+  font-size: 96px; /* Збільшено розмір шрифту заголовка */
+  color: #4a4a4a;
+  margin-bottom: 40px;
+  text-align: center; /* Центрування заголовка */
+  font-weight: 700;
+}
+
+.tree-branch {
+  list-style-type: none;
+  padding-left: 0;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap; /* Запобігає переносу рядків */
+  margin: 0;
+}
+
+.tree ul {
+  padding-top: 60px; /* Збільшено відступи */
+  position: relative;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  display: block;
+}
+
+.tree li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 60px 20px 0 20px; /* Збільшено відступи у кожному елементі */
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+.tree li::before, .tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 6px solid #ccc; /* Збільшено товщину ліній */
+  width: 50%;
+  height: 60px; /* Збільшено висоту ліній */
+}
+
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 6px solid #ccc; /* Збільшено товщину лівої лінії */
+}
+
+.tree li:only-child::after, .tree li:only-child::before {
+  display: none;
+}
+
+.tree li:only-child {
+  padding-top: 0;
+}
+
+.tree li:first-child::before, .tree li:last-child::after {
+  border: 0 none;
+}
+
+.tree li:last-child::before {
+  border-right: 6px solid #ccc; /* Збільшено товщину правої лінії */
+}
+
+.tree li:first-child::after {
+  border-radius: 0 10px 0 0;
+}
+
+.tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 6px solid #ccc; /* Збільшено товщину вертикальної лінії */
+  width: 0;
+  height: 60px; /* Збільшено висоту вертикальної лінії */
+}
+
+.tree li a {
+  border: 4px solid #ccc; /* Збільшено товщину бордера */
+  padding: 20px 30px; /* Помірні відступи всередині елементів */
+  text-decoration: none;
+  color: #333; /* Єдиний колір для всіх букв */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 32px; /* Встановлено розмір шрифту для гілок */
+  display: inline-block;
+  border-radius: 16px; /* Збільшено радіус кутів */
+  transition: all 0.3s;
+  background-color: #fdfdfd; /* Єдиний фон для всіх елементів */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Збільшено тінь */
+}
+
+.tree li a:hover {
+  background-color: #e6e6e6; /* Легкий ефект при наведенні для всіх */
+  border-color: #aaa;
+}
+
+/* Видалення окремого кольору для дружин */
+.tree li a.spouse {
+  color: #333; /* Колір букв дружин такий самий, як у всіх */
+}
+
+/* Стиль для блоку інформації про родину */
+.spouse-family {
+  border: 4px solid #ccc; /* Збільшено товщину бордера */
+  padding: 60px; /* Збільшено відступи */
+  margin-top: 60px; /* Збільшено відступи зверху */
+  background-color: #f9f9f9;
+  border-radius: 16px; /* Збільшено радіус кутів */
+}
+
+.spouse-family h3 {
+  margin-top: 0;
+  font-size: 72px; /* Збільшено розмір шрифту */
+  color: #4a4a4a;
+}
+
+.spouse-family ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.spouse-family li {
+  padding: 20px 0; /* Збільшено відступи між пунктами списку */
+}
+
+/* Стилі для підписів відносин */
+.relation-label {
+  font-weight: bold;
+  margin-right: 20px; /* Збільшено відступи між текстом */
+  font-size: 64px; /* Збільшено розмір шрифту */
+  color: #777;
+}
+
+/* Стиль для кнопки повернення */
+button#back-to-main {
+  display: inline-block;
+  padding: 30px 50px; /* Збільшено відступи */
+  font-size: 64px; /* Збільшено розмір шрифту */
+  color: #ffffff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 16px; /* Збільшено радіус кутів */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Збільшено тінь */
+}
+
+button#back-to-main:hover {
+  background-color: #45a049;
+}
+
+button#back-to-main:active {
+  background-color: #3e8e41;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Збільшено тінь при натисканні */
+}
+
+/* Медіа-запити для адаптації на мобільних пристроях */
+
+/* Для екранів до 768 пікселів (мобільні пристрої та планшети) */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 64px; /* Мінімальний розмір шрифту для мобільних */
+        padding: 10px;
+    }
+
+    #family-tree-container {
+        padding: 10px 0;
+        overflow-x: auto; /* Горизонтальний скрол для мобільних */
+    }
+
+    .branch-title {
+        font-size: 64px; /* Мінімальний розмір заголовків */
+        margin-bottom: 15px;
+    }
+
+    .tree-branch {
+        white-space: nowrap; /* Запобігає переносу рядків на мобільних */
+        font-size: 64px; /* Мінімальний розмір шрифту */
+    }
+
+    .tree li {
+        padding: 40px 10px 0 10px; /* Збільшено відступи у кожному елементі */
+    }
+
+    .tree li a {
+        padding: 20px 30px; /* Помірний розмір відступів всередині елементів */
+        font-size: 32px; /* Встановлено розмір шрифту для гілок */
+    }
+
+    .family-block h3 {
+        font-size: 64px; /* Мінімальний розмір шрифту заголовків блоків */
+    }
+
+    .family-block ul {
+        padding-left: 0;
+    }
+
+    .family-block li {
+        padding: 20px 0; /* Збільшено відступи між пунктами списку */
+    }
+
+    .tree li::before, .tree li::after, .tree ul ul::before {
+        height: 40px; /* Збільшено висоту ліній */
+    }
+
+    .relation-label {
+        font-size: 64px;
+        margin-right: 20px; /* Збільшено відступи між текстом */
+    }
+}
+
+/* Для дуже маленьких екранів до 480 пікселів (мобільні телефони) */
+@media only screen and (max-width: 480px) {
+    body {
+        font-size: 64px;
+    }
+
+    .branch-title {
+        font-size: 64px;
+    }
+
+    .tree-branch {
+        font-size: 64px;
+    }
+
+    .tree li a {
+        padding: 20px 30px;
+        font-size: 32px; /* Встановлено розмір шрифту для гілок */
+    }
+
+    .family-block h3 {
+        font-size: 64px;
+    }
+
+    .relation-label {
+        font-size: 64px;
+    }
+
+    button#back-to-main {
+        font-size: 64px;
+        padding: 30px 50px;
+    }
+}
