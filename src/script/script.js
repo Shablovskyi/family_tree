@@ -7,15 +7,29 @@ document.addEventListener("DOMContentLoaded", function () {
           let mainTree = null;
 
           function buildTree(person, level = 0) {
+              // Отримуємо дати народження і смерті або ставимо прочерк, якщо вони відсутні
+              const birthDate = person.birthDate || '—';
+              const deathDate = person.deathDate || '—';
+
               let listItem = `<li data-level="${level}" data-id="${person.id}">
-                  <a href="#" data-gender="${person.gender}" data-id="${person.id}" data-surname="${person.surname}" class="person">${person.name}</a>`;
+                  <a href="#" data-gender="${person.gender}" data-id="${person.id}" data-surname="${person.surname}" class="person">
+                      ${person.name} (${birthDate} - ${deathDate})
+                  </a>`;
               
               if (person.wife) {
+                  const wifeBirthDate = person.wife.birthDate || '—';
+                  const wifeDeathDate = person.wife.deathDate || '—';
                   listItem += ` <span style="color: #888;">&mdash;</span> 
-                  <a href="#" class="spouse" data-id="${person.wife.id}" data-surname="${person.wife.surname}" data-gender="female">${person.wife.name}</a>`;
+                  <a href="#" class="spouse" data-id="${person.wife.id}" data-surname="${person.wife.surname}" data-gender="female">
+                      ${person.wife.name} (${wifeBirthDate} - ${wifeDeathDate})
+                  </a>`;
               } else if (person.husband) {
+                  const husbandBirthDate = person.husband.birthDate || '—';
+                  const husbandDeathDate = person.husband.deathDate || '—';
                   listItem += ` <span style="color: #888;">&mdash;</span> 
-                  <a href="#" class="spouse" data-id="${person.husband.id}" data-surname="${person.husband.surname}" data-gender="male">${person.husband.name}</a>`;
+                  <a href="#" class="spouse" data-id="${person.husband.id}" data-surname="${person.husband.surname}" data-gender="male">
+                      ${person.husband.name} (${husbandBirthDate} - ${husbandDeathDate})
+                  </a>`;
               }
 
               if (person.children && person.children.length > 0) {
@@ -63,10 +77,18 @@ document.addEventListener("DOMContentLoaded", function () {
               if (person.father || person.mother) {
                   familyBlock += `<div class="parents"><h3>Батьки:</h3><ul>`;
                   if (person.father) {
-                      familyBlock += `<li><span class="relation-label">Батько:</span> <a href="#" data-id="${person.father.id}" class="person">${person.father.name} ${person.father.surname}</a></li>`;
+                      const fatherBirthDate = person.father.birthDate || '—';
+                      const fatherDeathDate = person.father.deathDate || '—';
+                      familyBlock += `<li><span class="relation-label">Батько:</span> <a href="#" data-id="${person.father.id}" class="person">
+                          ${person.father.name} ${person.father.surname} (${fatherBirthDate} - ${fatherDeathDate})
+                      </a></li>`;
                   }
                   if (person.mother) {
-                      familyBlock += `<li><span class="relation-label">Мати:</span> <a href="#" data-id="${person.mother.id}" class="person">${person.mother.name} ${person.mother.surname}</a></li>`;
+                      const motherBirthDate = person.mother.birthDate || '—';
+                      const motherDeathDate = person.mother.deathDate || '—';
+                      familyBlock += `<li><span class="relation-label">Мати:</span> <a href="#" data-id="${person.mother.id}" class="person">
+                          ${person.mother.name} ${person.mother.surname} (${motherBirthDate} - ${motherDeathDate})
+                      </a></li>`;
                   }
                   familyBlock += `</ul></div>`;
               }
@@ -75,7 +97,11 @@ document.addEventListener("DOMContentLoaded", function () {
               if (person.siblings && person.siblings.length > 0) {
                   familyBlock += `<div class="siblings"><h3>Брати/Сестри:</h3><ul>`;
                   person.siblings.forEach(sibling => {
-                      familyBlock += `<li><span class="relation-label">Брат/Сестра:</span> <a href="#" data-id="${sibling.id}" class="person">${sibling.name} ${sibling.surname}</a></li>`;
+                      const siblingBirthDate = sibling.birthDate || '—';
+                      const siblingDeathDate = sibling.deathDate || '—';
+                      familyBlock += `<li><span class="relation-label">Брат/Сестра:</span> <a href="#" data-id="${sibling.id}" class="person">
+                          ${sibling.name} ${sibling.surname} (${siblingBirthDate} - ${siblingDeathDate})
+                      </a></li>`;
                   });
                   familyBlock += `</ul></div>`;
               }
